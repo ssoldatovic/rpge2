@@ -1,34 +1,64 @@
 
 
-<p>
-  <strong>Name:</strong>
-  <%= @hero.name %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@hero.picture_url, :width => 250) if @hero.picture.present? %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @hero.user_id %>
-</p>
-
-<h3>Powers</h3>
-<% @powers.each do |power| %>
-  <div>
-  	<% if user_signed_in? %>
-	  <% if current_user.id == power.user_id %>
-    	<strong><%= power.user_id %></strong>
-    	<br />
-    	<p><%= power.name %></p>
-       	<p><%= link_to 'Delete', power_path(power), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-  	  <% end %>
-	<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag(@hero.picture_url, :width => "100%") if @hero.picture.present? %>
   </div>
-<% end %>
-<%= render 'powers/form' %>
 
-<%= link_to 'Edit', edit_hero_path(@hero) %> |
-<%= link_to 'Back', heros_path %>
+  <div class="col-md-6">
+    <p><h3>Hero: <%= @hero.name %></h3></p>
+
+    <p><b>Creator ID: </b><%= @hero.user_id %></p>
+
+  	<p>
+      	<%= link_to 'Edit', edit_hero_path(@hero) %> |
+		<%= link_to 'Back', heros_path %>
+    </p>
+    
+    
+    <h4><%= @hero.name %> super-powers:</h4>
+		
+			<table>
+			  <thead>
+			    <tr>
+			      <th>User ID</th>
+			      <th>Power</th>
+			      <th>Value</th>
+			      <th>Avatar</th>
+			      <th colspan="3"></th>
+			    </tr>
+			  </thead>
+			
+			  <tbody>
+			  	  <tr>
+			  	  	<td colspan="7"><%= paginate @powers %></td>
+			  	  </tr>
+			      <% @powers.each do |power| %>
+			      <tr>
+			      <% if user_signed_in? %>
+			  		<% if current_user.id == power.user_id %>
+			  		<td><strong><%= power.user_id %></strong></td>
+			        <td><%= power.name %></td>
+			        <td><%= power.value %></td>
+			        <td><%= image_tag(@power.picture_url, :width => "10%") if @power.picture.present? %></td>
+			        <td><%= link_to 'Show', power %></td>
+					<td><%= link_to 'Edit', edit_power_path(power) %></td>
+					<td><%= link_to 'Destroy', power, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				    <% end %>
+				<% end %>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			  
+			</table>
+			
+			<p><hr size="10px"></p>
+			
+			<h4>Add new super-power to <%= @hero.name %></h4>
+		
+			<%= render 'powers/form' %>
+    
+    
+  </div>
+</div>
+

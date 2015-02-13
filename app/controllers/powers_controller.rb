@@ -4,7 +4,8 @@ class PowersController < ApplicationController
   # GET /powers
   # GET /powers.json
   def index
-    @powers = Power.all
+    # @powers = Power.all
+    @powers = Power.order("name").page(params[:page]).per(3)
   end
 
   # GET /powers/1
