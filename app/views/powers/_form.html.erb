@@ -1,0 +1,31 @@
+<%= form_for(@power) do |f| %>
+  <% if @power.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@power.errors.count, "error") %> prohibited this power from being saved:</h2>
+
+      <ul>
+      <% @power.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.number_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.text_field :picture %>
+  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :hero_id%>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

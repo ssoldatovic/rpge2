@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @power.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @power.value %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @power.picture %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @power.user_id %>
+</p>
+
+<p>
+  <strong>Hero:</strong>
+  <%= @power.hero_id %>
+</p>
+
+<%= link_to 'Edit', edit_power_path(@power) %> |
+<%= link_to 'Back', powers_path %>
