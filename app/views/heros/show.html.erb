@@ -7,7 +7,7 @@
 
 <p>
   <strong>Picture:</strong>
-  <%= @hero.picture %>
+  <%= image_tag(@hero.picture_url, :width => 250) if @hero.picture.present? %>
 </p>
 
 <p>
@@ -18,14 +18,12 @@
 <h3>Powers</h3>
 <% @powers.each do |power| %>
   <div>
-    <strong><%= power.user_id %></strong>
-    <br />
-    <p><%= power.name %></p>
-    <% if user_signed_in? %>
+  	<% if user_signed_in? %>
 	  <% if current_user.id == power.user_id %>
-
-    	<p><%= link_to 'Delete', power_path(power), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-
+    	<strong><%= power.user_id %></strong>
+    	<br />
+    	<p><%= power.name %></p>
+       	<p><%= link_to 'Delete', power_path(power), method: :delete, data: { confirm: 'Are you sure?' } %></p>
   	  <% end %>
 	<% end %>
   </div>
