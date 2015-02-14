@@ -3,7 +3,7 @@ class Hero < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   
   belongs_to :user
-  has_many :powers
+  has_many :powers, dependent: :destroy
   
   validates :name, :picture, presence: true
   validates :name, uniqueness: true

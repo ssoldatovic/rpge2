@@ -5,7 +5,7 @@ class HerosController < ApplicationController
   # GET /heros.json
   def index
     # @heros = Hero.all
-    @heros = Hero.order("name").page(params[:page]).per(3)
+    @heros = Hero.order("name").page(params[:page]).per(25)
   end
 
   # GET /heros/1
