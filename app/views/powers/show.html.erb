@@ -1,29 +1,26 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @power.name %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag(@power.picture_url, :width => "100%") if @power.picture.present? %>
+  </div>
 
-<p>
-  <strong>Value:</strong>
-  <%= @power.value %>
-</p>
+  <div class="col-md-6">
+    <p><h3>Power: <%= @power.name %></h3></p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @power.picture %>
-  <%= image_tag(@power.picture_url, :width => 100) if @power.picture.present? %>
-</p>
+    <p>Creator ID:<%= @power.user_id %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @power.user_id %>
-</p>
+	<p>Value: <%= @power.value %></p>
+	
+	<p>Picture:
+		<%= @power.picture %>
+  		<%= image_tag(@power.picture_url, :width => 100) if @power.picture.present? %></p>
+	
+	<p>Hero:  <%= @power.hero_id %></p>
 
-<p>
-  <strong>Hero:</strong>
-  <%= @power.hero_id %>
-</p>
+  	<p>
+      	<%= link_to 'Edit', edit_power_path(@power) %> |
+		<%= link_to 'Back', powers_path %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_power_path(@power) %> |
-<%= link_to 'Back', powers_path %>
