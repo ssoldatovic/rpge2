@@ -1,19 +1,15 @@
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-3">
     <%= image_tag(@power.picture_url, :width => "100%") if @power.picture.present? %>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-9">
     <p><h3>Power: <%= @power.name %></h3></p>
 
     <p>Creator ID:<%= @power.user_id %></p>
 
 	<p>Value: <%= @power.value %></p>
-	
-	<p>Picture:
-		<%= @power.picture %>
-  		<%= image_tag(@power.picture_url, :width => 100) if @power.picture.present? %></p>
 	
 	<p>Hero:  <%= @power.hero_id %></p>
 

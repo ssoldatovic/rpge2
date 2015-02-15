@@ -15,16 +15,19 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <br/>
   <div class="field">
     <%= f.label :value %><br>
     <%= f.number_field :value %>
   </div>
+  <br/>
   <div class="field">
     <%= f.label :picture %><br>
     <%= f.file_field :picture %>
   </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :hero_id%>
+  <br/>
   <p><div class="actions">
     <%= f.submit %>
   </div></p>

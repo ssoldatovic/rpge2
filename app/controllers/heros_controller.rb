@@ -5,7 +5,8 @@ class HerosController < ApplicationController
   # GET /heros.json
   def index
     # @heros = Hero.all
-    @heros = Hero.order("name").page(params[:page]).per(25)
+    # @heros = Hero.order("name").page(params[:page]).per(3)
+    @heros = current_user.heros.page(params[:page]).per(3)
   end
 
   # GET /heros/1
@@ -13,7 +14,7 @@ class HerosController < ApplicationController
   def show
     @hero = Hero.find(params[:id])
     # @powers = @hero.powers.all
-    @powers = Power.order("name").page(params[:page]).per(3)
+    @powers = @hero.powers.order("name").page(params[:page]).per(3)
     @power = @hero.powers.build
   end
 

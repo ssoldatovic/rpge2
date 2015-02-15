@@ -6,21 +6,22 @@
 <% @heros.in_groups_of(3) do |group| %>
   <div class="row">
     <% group.compact.each do |hero| %>
-      <% if user_signed_in? %>
-	  	<% if current_user.id == hero.user_id %>
-	  		<div class="col-md-4">
-       			<%= image_tag(hero.picture_url, :width => '80%') if hero.picture.present? %>
-        	<h4><%= link_to hero.name, hero %></h4>
+	  	<div class="col-md-4">
+	  		<% if user_signed_in? %>
+	  			<% if current_user.id == hero.user_id %>
+       			<%= link_to (( image_tag(hero.picture_url, :width => '100%') if hero.picture.present? )), hero %>
+        		<h4><%= link_to hero.name, hero %></h4>
 				<br>
 				<%= link_to 'Show', hero %> |
 				<%= link_to 'Edit', edit_hero_path(hero) %> | 
-				<%= link_to 'Destroy', hero, method: :delete, data: { confirm: 'Are you sure?' } %>	   
-	    	</div>
-	    <% end %>
-	  <% end %>      
+				<%= link_to 'Destroy', hero, method: :delete, data: { confirm: 'Are you sure?' } %>
+				<% end %>	
+			<% end %>	   
+	    </div>	        
     <% end %>
   </div>
 <% end %>
+
 <br>
 
 <%= link_to 'New Hero', new_hero_path %>
