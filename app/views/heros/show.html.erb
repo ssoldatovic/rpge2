@@ -16,30 +16,16 @@
     
     
     <h4><%= @hero.name %> super-powers:</h4>
-		
-		<% @powers.each do |power| %>
-			<% if user_signed_in? %>
-			 	<% if current_user.id == power.user_id %>
-					<div class="row">						
-						<div class="col-md-4"><%= power.name %></div>
-			  			<div class="col-md-2"><%= power.value %></div>
-			    		<div class="col-md-6">
-			    			<%= link_to 'Show', power %> |
-							<%= link_to 'Edit', edit_power_path(power) %> |
-							<%= link_to 'Destroy', power, method: :delete, data: { confirm: 'Are you sure?' } %>
-						</div>						        
-					</div>					
-				<% end %>
-			<% end %>
-		 <% end %>
-		 <div class="row">						
-			<div class="col-md-12"><%= paginate @powers %></div>				        
-		 </div>
+	<div id="powers_list">
+		<%= render partial: 'powers', locals: { powers: @powers } %>
+	</div>
   </div>
   <div class="col-md-2">			
-			<h4>Create<br/>new super-power<br/>to <%= @hero.name %>:</h4>
+			<h4>Create<br/>new super-power<br/>for <%= @hero.name %>:</h4>
 			<br/>
-			<%= render 'powers/form' %>  
+			<div id="new_power_holder">
+				<%= render 'powers/form' %>
+			</div>  
   </div>
 </div>
 

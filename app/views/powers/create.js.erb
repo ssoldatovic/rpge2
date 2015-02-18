@@ -1,0 +1,5 @@
+<% if @saved %>
+	$('#powers_list').html("<%= escape_javascript(render(partial: 'heros/powers', locals: { powers: @powers })) %>");
+<% end %>
+
+$('#new_power_holder').html("<%= escape_javascript(render('powers/form')) %>");

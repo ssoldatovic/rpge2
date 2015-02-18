@@ -13,11 +13,8 @@
  *= require_tree .
  *= require_self
  */
-body { padding-top: 60px; }
+body { padding-top: 70px; }
 footer { margin-top: 100px; }
-table, td, th { vertical-align: middle; border: none; }
-th { border-bottom: 1px solid #DDD; }
-.navbar { min-height: 38px; background-color: #f55e55; } 
-.navbar a.brand { font-size: 18px; } .navbar a.brand:hover { color: #fff; background-color: transparent; text-decoration: none; } 
-footer { background-color: #ebebeb; padding: 30px 0; } 
-.hr { size: 5px; color: #f55e55; }
+footer { background-color: #cccccc; padding: 20px 0; } 
+.navbar { min-height: 38px; background-color: #cccccc; } 
+.navbar a.brand { font-size: 18px; } .navbar a.brand:hover { color: #fff; background-color: transparent; text-decoration: none; }

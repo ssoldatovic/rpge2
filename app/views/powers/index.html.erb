@@ -9,7 +9,7 @@
 	  	<div class="col-md-4">
 	  		<% if user_signed_in? %>
 	  			<% if current_user.id == power.user_id %>
-       				<%= link_to (( image_tag(power.picture_url, :width => '50%') if power.picture.present? )), power %>
+       				<%= link_to (( image_tag(power.picture_url, :width => '100px') if power.picture.present? )), power %>
         			<h4>Name: <%= link_to power.name, power %></h4>
         			<h4>Value: <%= link_to power.value, power %></h4>
         			<h5>User: <%= link_to power.user_id, power %></h5>

@@ -26,15 +26,20 @@ class PowersController < ApplicationController
   # POST /powers
   # POST /powers.json
   def create
-    @power = Power.new(power_params)
+    @hero = current_user.heros.find(power_params[:hero_id])
+    @power = @hero.powers.new(power_params)
+    @powers = @hero.powers.order("name").page(params[:page]).per(3)
 
     respond_to do |format|
-      if @power.save
+      @saved = @power.save
+      if @saved
         format.html { redirect_to @power, notice: 'Power was successfully created.' }
         format.json { render :show, status: :created, location: @power }
+        format.js { @power = @hero.powers.build }
       else
         format.html { render :new }
         format.json { render json: @power.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -43,12 +48,15 @@ class PowersController < ApplicationController
   # PATCH/PUT /powers/1.json
   def update
     respond_to do |format|
-      if @power.update(power_params)
+      @saved = @power.update(power_params)
+      if @saved
         format.html { redirect_to @power, notice: 'Power was successfully updated.' }
         format.json { render :show, status: :ok, location: @power }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @power.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
