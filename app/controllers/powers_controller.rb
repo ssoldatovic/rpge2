@@ -12,6 +12,7 @@ class PowersController < ApplicationController
   # GET /powers/1
   # GET /powers/1.json
   def show
+    @power = current_user.powers.find(params[:id])
   end
 
   # GET /powers/new

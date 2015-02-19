@@ -12,7 +12,7 @@ class HerosController < ApplicationController
   # GET /heros/1
   # GET /heros/1.json
   def show
-    @hero = Hero.find(params[:id])
+    @hero = current_user.heros.find(params[:id])
     # @powers = @hero.powers.all
     @powers = @hero.powers.order("name").page(params[:page]).per(3)
     @power = @hero.powers.build
