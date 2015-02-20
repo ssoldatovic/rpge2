@@ -1,11 +1,18 @@
+<div class="row">						
+	<div class="col-md-3">Name:</div>
+	<div class="col-md-2">Avatar:</div>
+	<div class="col-md-2">Value:</div>
+	<div class="col-md-5"></div>						        
+</div>		
 <% powers.each do |power| %>
 	<% if user_signed_in? %>
 	 	<% if current_user.id == power.user_id %>
+			
 			<div class="row">						
-				<div class="col-md-2"><%= power.name %></div>
-				<div class="col-md-2"><%= image_tag(power.picture_url, :width => "100%") if power.picture.present? %></div>
+				<div class="col-md-3"><%= power.name %></div>
+				<div class="col-md-2"><%= image_tag(power.picture_url, :width => "150%") if power.picture.present? %></div>
 	  			<div class="col-md-2"><%= power.value %></div>
-	    		<div class="col-md-6">
+	    		<div class="col-md-5">
 	    			<%= link_to 'Show', power %> |
 					<%= link_to 'Edit', edit_power_path(power) %> |
 					<%= link_to 'Destroy', power, method: :delete, data: { confirm: 'Are you sure?' } %>

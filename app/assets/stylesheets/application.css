@@ -18,3 +18,4 @@ footer { margin-top: 100px; }
 footer { background-color: #cccccc; padding: 20px 0; } 
 .navbar { min-height: 38px; background-color: #cccccc; } 
 .navbar a.brand { font-size: 18px; } .navbar a.brand:hover { color: #fff; background-color: transparent; text-decoration: none; }
+.error_message { background-color: #f55e55; font-size: 16px; padding: 10px 10px; }

@@ -1,7 +1,8 @@
 <%= form_for(@power, remote:true) do |f| %>
+
   <% if @power.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@power.errors.count, "error") %> prohibited this power from being saved:</h2>
+    <div id="error_explanation" class="error_message">
+      <p><%= pluralize(@power.errors.count, "error") %> prohibited this power from being saved:</p>
 
       <ul>
       <% @power.errors.full_messages.each do |message| %>
@@ -21,7 +22,10 @@
     <%= f.number_field :value %>
   </div>
   <br/>
- 
+  <div class="field">
+    <%= f.label :picture %><br>
+    <%= f.file_field :picture %>
+  </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :hero_id%>
   <br/>
@@ -29,3 +33,5 @@
     <%= f.submit %>
   </div></p>
 <% end %>
+
+
